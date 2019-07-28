@@ -21,6 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    //For category
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void parseTopSeller() {
-        StringRequest request = new StringRequest(Request.Method.POST, "http://www.json-generator.com/api/json/get/cpVYYBdrVK?indent=2", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, "http://crazymall.co.in/admin/not_usable/product_list.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -167,8 +168,11 @@ public class MainActivity extends AppCompatActivity {
 
                         final TopSeller topSeller = new TopSeller();    //topSeller-obj
 
-                        topSeller.setItemname(jsonObject.getString("item"));
+                        //topSeller.setItemname(jsonObject.getString("item"));
                         //topSeller.setPics(jsonObject.getString("img"));
+                        topSeller.setItemname(jsonObject.getString("tag2"));
+                        topSeller.setPics(jsonObject.getString("feature_url"));
+                        topSeller.setId(jsonObject.getString("add_product_id"));
 
                         topSellerList.add(topSeller);
                     }
